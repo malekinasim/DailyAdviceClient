@@ -21,18 +21,6 @@ public class AdviserReaderClient implements AutoCloseable {
         this.socketChannel = socketChannel;
         this.messageListener = messageListener;
     }
-
-    // Console mode: blocks this thread
-    public void listenBlocking() throws IOException {
-        running = true;
-
-        try {
-            listenLoop();
-        } finally {
-            close();
-        }
-    }
-
     // api and stream mode: listens in background thread
     public void startListeningAsync() {
         running = true;
